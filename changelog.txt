@@ -6,6 +6,7 @@ PS SEO
 - Moderne Titel-, Meta-, Canonical- und Robots-Verarbeitung ergaenzt.
 - Open Graph, Twitter Cards und Bild-Fallbacks neu implementiert.
 - Zentralen JSON-LD-Graph fuer Website, Betreiber, Seiten, Artikel und Breadcrumbs hinzugefuegt.
+- MarketPress-Produkte und -Varianten als Product-, Offer- und ProductGroup-Schema integriert.
 - ClassicPress-Core-Sitemaps um noindex- und Redirect-Ausschluesse sowie `/ps-sitemap.xml` erweitert.
 - Neue SEO-Metabox, Einstellungen und Inhaltsanalyse implementiert.
 - Englische PO- und MO-Sprachdateien sowie eine POT-Vorlage hinzugefuegt.

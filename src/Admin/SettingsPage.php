@@ -9,7 +9,23 @@ final class SettingsPage {
 	public static function register(): void {
 		add_action( 'admin_menu', array( self::class, 'add_menu' ) );
 		add_action( 'admin_init', array( self::class, 'register_settings' ) );
+		add_action( 'admin_init', array( self::class, 'redirect_legacy_url' ), 1 );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue_assets' ) );
+	}
+
+	public static function redirect_legacy_url(): void {
+		global $pagenow;
+
+		$page = isset( $_GET['page'] ) && is_string( $_GET['page'] )
+			? sanitize_key( wp_unslash( $_GET['page'] ) )
+			: '';
+
+		if ( 'options-general.php' !== $pagenow || 'ps-seo' !== $page ) {
+			return;
+		}
+
+		wp_safe_redirect( add_query_arg( 'page', 'ps-seo', admin_url( 'admin.php' ) ) );
+		exit;
 	}
 
 	public static function add_menu(): void {

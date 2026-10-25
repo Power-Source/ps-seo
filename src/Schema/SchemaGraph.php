@@ -2,6 +2,7 @@
 
 namespace PSource\SEO\Schema;
 
+use PSource\SEO\Integration\MarketPress;
 use PSource\SEO\PostMeta;
 use PSource\SEO\Settings;
 
@@ -24,7 +25,10 @@ final class SchemaGraph {
 			$schema  = (array) PostMeta::get( $post_id, PostMeta::SCHEMA, array() );
 
 			if ( 'none' !== ( $schema['type'] ?? '' ) ) {
-				$graph[] = self::page( $post_id, $schema['type'] ?? '' );
+				$requested_type = $schema['type'] ?? '';
+				$graph[]        = MarketPress::is_product( $post_id ) && in_array( $requested_type, array( '', 'Product' ), true )
+					? MarketPress::schema( $post_id )
+					: self::page( $post_id, $requested_type );
 				$graph[] = self::breadcrumbs( $post_id );
 			}
 		}
@@ -139,6 +143,11 @@ final class SchemaGraph {
 	}
 
 	private static function breadcrumbs( int $post_id ): array {
+		$current_title = get_the_title( $post_id );
+		if ( '' === trim( $current_title ) ) {
+			$current_title = (string) get_post_field( 'post_title', $post_id );
+		}
+
 		$items = array(
 			array(
 				'@type'   => 'ListItem',
@@ -173,7 +182,7 @@ final class SchemaGraph {
 		$items[] = array(
 			'@type'   => 'ListItem',
 			'position' => count( $items ) + 1,
-			'name'     => get_the_title( $post_id ),
+			'name'     => $current_title,
 			'item'     => get_permalink( $post_id ),
 		);
 

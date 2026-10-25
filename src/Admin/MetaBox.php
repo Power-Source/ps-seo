@@ -2,6 +2,7 @@
 
 namespace PSource\SEO\Admin;
 
+use PSource\SEO\Integration\MarketPress;
 use PSource\SEO\PostMeta;
 use PSource\SEO\Settings;
 
@@ -138,6 +139,9 @@ final class MetaBox {
 						<option value=""><?php esc_html_e( 'Automatisch', 'ps-seo' ); ?></option>
 						<option value="Article" <?php selected( $schema['type'] ?? '', 'Article' ); ?>>Article</option>
 						<option value="WebPage" <?php selected( $schema['type'] ?? '', 'WebPage' ); ?>>WebPage</option>
+						<?php if ( MarketPress::is_product( $post->ID ) ) : ?>
+							<option value="Product" <?php selected( $schema['type'] ?? '', 'Product' ); ?>>Product</option>
+						<?php endif; ?>
 						<option value="none" <?php selected( $schema['type'] ?? '', 'none' ); ?>><?php esc_html_e( 'Kein Seitenschema', 'ps-seo' ); ?></option>
 					</select>
 				</label>
