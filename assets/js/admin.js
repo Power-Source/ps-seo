@@ -54,30 +54,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (titleValue.length >= 30 && titleValue.length <= 60) {
 			score += 30;
-			checks.push('SEO-Titel hat eine gute Laenge.');
+			checks.push(psSeoAdmin.titleLengthGood);
 		} else {
-			checks.push('SEO-Titel sollte 30 bis 60 Zeichen lang sein.');
+			checks.push(psSeoAdmin.titleLengthImprove);
 		}
 
 		if (descriptionValue.length >= 120 && descriptionValue.length <= 160) {
 			score += 30;
-			checks.push('Meta-Beschreibung hat eine gute Laenge.');
+			checks.push(psSeoAdmin.descriptionLengthGood);
 		} else {
-			checks.push('Meta-Beschreibung sollte 120 bis 160 Zeichen lang sein.');
+			checks.push(psSeoAdmin.descriptionImprove);
 		}
 
 		if (keywordValue) {
 			score += 20;
 			if (titleValue.toLowerCase().includes(keywordValue)) {
 				score += 10;
-				checks.push('Fokus-Keyword ist im SEO-Titel enthalten.');
+				checks.push(psSeoAdmin.keywordInTitle);
 			}
 			if (descriptionValue.toLowerCase().includes(keywordValue)) {
 				score += 10;
-				checks.push('Fokus-Keyword ist in der Meta-Beschreibung enthalten.');
+				checks.push(psSeoAdmin.keywordInDescription);
 			}
 		} else {
-			checks.push('Kein Fokus-Keyword gesetzt.');
+			checks.push(psSeoAdmin.keywordMissing);
 		}
 
 		const scoreElement = document.querySelector('[data-ps-seo-score]');

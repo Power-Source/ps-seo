@@ -2,12 +2,13 @@
 /**
  * Plugin Name: PS SEO
  * Plugin URI: https://github.com/Power-Source/ps-seo
- * Description: Moderne SEO-Werkzeuge fuer Metadaten, Social Sharing, Schema und Sitemaps.
- * Version: 3.0.0
+ * Description: Moderne SEO-Werkzeuge für Metadaten, Social Sharing, Schema und Sitemaps.
+ * Version: 1.0.0
  * Requires at least: 6.0
  * Requires PHP: 8.0
  * Network: true
  * Text Domain: ps-seo
+ * Domain Path: /languages
  * Author: PSOURCE
  * License: GPL-2.0-or-later
  */
@@ -16,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PS_SEO_VERSION', '3.0.0' );
+define( 'PS_SEO_VERSION', '1.0.0' );
 define( 'PS_SEO_FILE', __FILE__ );
 define( 'PS_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PS_SEO_URL', plugin_dir_url( __FILE__ ) );

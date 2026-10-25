@@ -55,7 +55,7 @@ final class SettingsPage {
 		?>
 		<div class="wrap ps-seo-settings">
 			<h1><?php esc_html_e( 'PS SEO', 'ps-seo' ); ?></h1>
-			<p><?php esc_html_e( 'Zentrale Einstellungen fuer Metadaten, Social Sharing, strukturierte Daten und Sitemaps.', 'ps-seo' ); ?></p>
+			<p><?php esc_html_e( 'Zentrale Einstellungen für Metadaten, Social Sharing, strukturierte Daten und Sitemaps.', 'ps-seo' ); ?></p>
 
 			<form action="options.php" method="post">
 				<?php settings_fields( 'ps_seo' ); ?>
@@ -85,11 +85,14 @@ final class SettingsPage {
 
 				<div class="ps-seo-card">
 					<h2><?php esc_html_e( 'Titelvorlagen', 'ps-seo' ); ?></h2>
-					<p class="description"><?php esc_html_e( 'Verfuegbare Platzhalter: %title%, %site_name%, %tagline%, %separator%, %search%, %archive%, %author%, %current_year%', 'ps-seo' ); ?></p>
+					<p class="description">
+						<?php esc_html_e( 'Verfügbare Platzhalter:', 'ps-seo' ); ?>
+						<code>%title%, %site_name%, %tagline%, %separator%, %search%, %archive%, %author%, %current_year%</code>
+					</p>
 					<?php
 					$contexts = array(
 						'home'    => __( 'Startseite', 'ps-seo' ),
-						'post'    => __( 'Beitraege', 'ps-seo' ),
+						'post'    => __( 'Beiträge', 'ps-seo' ),
 						'page'    => __( 'Seiten', 'ps-seo' ),
 						'archive' => __( 'Archive', 'ps-seo' ),
 						'search'  => __( 'Suche', 'ps-seo' ),
@@ -111,7 +114,7 @@ final class SettingsPage {
 						<span><?php esc_html_e( 'Standardbild', 'ps-seo' ); ?></span>
 						<span class="ps-seo-media-field">
 							<input type="number" min="0" name="<?php echo esc_attr( Settings::OPTION ); ?>[social][default_image_id]" value="<?php echo esc_attr( $settings['social']['default_image_id'] ); ?>">
-							<button type="button" class="button ps-seo-select-media"><?php esc_html_e( 'Bild waehlen', 'ps-seo' ); ?></button>
+							<button type="button" class="button ps-seo-select-media"><?php esc_html_e( 'Bild wählen', 'ps-seo' ); ?></button>
 						</span>
 					</label>
 					<label class="ps-seo-field">
@@ -148,7 +151,7 @@ final class SettingsPage {
 						<span><?php esc_html_e( 'Logo', 'ps-seo' ); ?></span>
 						<span class="ps-seo-media-field">
 							<input type="number" min="0" name="<?php echo esc_attr( Settings::OPTION ); ?>[schema][logo_id]" value="<?php echo esc_attr( $settings['schema']['logo_id'] ); ?>">
-							<button type="button" class="button ps-seo-select-media"><?php esc_html_e( 'Logo waehlen', 'ps-seo' ); ?></button>
+							<button type="button" class="button ps-seo-select-media"><?php esc_html_e( 'Logo wählen', 'ps-seo' ); ?></button>
 						</span>
 					</label>
 					<label class="ps-seo-field">
@@ -162,7 +165,7 @@ final class SettingsPage {
 					<label class="ps-seo-field">
 						<span><?php esc_html_e( 'Social-Profile', 'ps-seo' ); ?></span>
 						<textarea class="large-text" rows="4" name="<?php echo esc_attr( Settings::OPTION ); ?>[schema][social_profiles]"><?php echo esc_textarea( $settings['schema']['social_profiles'] ); ?></textarea>
-						<small><?php esc_html_e( 'Eine vollstaendige URL pro Zeile.', 'ps-seo' ); ?></small>
+						<small><?php esc_html_e( 'Eine vollständige URL pro Zeile.', 'ps-seo' ); ?></small>
 					</label>
 				</div>
 

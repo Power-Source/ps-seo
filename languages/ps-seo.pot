@@ -1,0 +1,254 @@
+# Copyright (C) 2026 PSOURCE
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: PS SEO 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ps-seo\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-25T11:03:15+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: ps-seo\n"
+
+#. Plugin Name of the plugin
+#: ps-seo.php
+#: src/Admin/MetaBox.php:27
+#: src/Admin/SettingsPage.php:17
+#: src/Admin/SettingsPage.php:18
+#: src/Admin/SettingsPage.php:57
+msgid "PS SEO"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: ps-seo.php
+msgid "https://github.com/Power-Source/ps-seo"
+msgstr ""
+
+#. Description of the plugin
+#: ps-seo.php
+msgid "Moderne SEO-Werkzeuge für Metadaten, Social Sharing, Schema und Sitemaps."
+msgstr ""
+
+#. Author of the plugin
+#: ps-seo.php
+msgid "PSOURCE"
+msgstr ""
+
+#: src/Admin/MetaBox.php:48
+msgid "Der SEO-Titel hat eine gute Länge."
+msgstr ""
+
+#: src/Admin/MetaBox.php:49
+msgid "Der SEO-Titel sollte 30 bis 60 Zeichen lang sein."
+msgstr ""
+
+#: src/Admin/MetaBox.php:50
+msgid "Die Meta-Beschreibung hat eine gute Länge."
+msgstr ""
+
+#: src/Admin/MetaBox.php:51
+msgid "Die Meta-Beschreibung sollte 120 bis 160 Zeichen lang sein."
+msgstr ""
+
+#: src/Admin/MetaBox.php:52
+msgid "Das Fokus-Keyword ist im SEO-Titel enthalten."
+msgstr ""
+
+#: src/Admin/MetaBox.php:53
+msgid "Das Fokus-Keyword ist in der Meta-Beschreibung enthalten."
+msgstr ""
+
+#: src/Admin/MetaBox.php:54
+msgid "Es wurde kein Fokus-Keyword gesetzt."
+msgstr ""
+
+#: src/Admin/MetaBox.php:73
+msgid "Suchergebnis"
+msgstr ""
+
+#: src/Admin/MetaBox.php:74
+#: src/Admin/SettingsPage.php:112
+msgid "Social Media"
+msgstr ""
+
+#: src/Admin/MetaBox.php:75
+msgid "Erweitert"
+msgstr ""
+
+#: src/Admin/MetaBox.php:80
+msgid "Fokus-Keyword"
+msgstr ""
+
+#: src/Admin/MetaBox.php:84
+msgid "SEO-Titel"
+msgstr ""
+
+#: src/Admin/MetaBox.php:89
+msgid "Meta-Beschreibung"
+msgstr ""
+
+#: src/Admin/MetaBox.php:95
+msgid "SEO-Analyse"
+msgstr ""
+
+#: src/Admin/MetaBox.php:104
+msgid "Social-Media-Titel"
+msgstr ""
+
+#: src/Admin/MetaBox.php:108
+msgid "Social-Media-Beschreibung"
+msgstr ""
+
+#: src/Admin/MetaBox.php:112
+msgid "Social-Media-Bild"
+msgstr ""
+
+#: src/Admin/MetaBox.php:115
+#: src/Admin/SettingsPage.php:117
+msgid "Bild wählen"
+msgstr ""
+
+#: src/Admin/MetaBox.php:122
+msgid "Canonical URL"
+msgstr ""
+
+#: src/Admin/MetaBox.php:126
+msgid "Weiterleitungsziel"
+msgstr ""
+
+#: src/Admin/MetaBox.php:130
+msgid "Robots"
+msgstr ""
+
+#: src/Admin/MetaBox.php:136
+msgid "Schema-Typ"
+msgstr ""
+
+#: src/Admin/MetaBox.php:138
+msgid "Automatisch"
+msgstr ""
+
+#: src/Admin/MetaBox.php:141
+msgid "Kein Seitenschema"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:58
+msgid "Zentrale Einstellungen für Metadaten, Social Sharing, strukturierte Daten und Sitemaps."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:64
+msgid "Module"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:68
+msgid "Titel und Metadaten"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:69
+msgid "Open Graph und Twitter Cards"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:70
+msgid "Schema.org"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:71
+msgid "XML-Sitemaps"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:72
+msgid "Weiterleitungen"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:73
+msgid "Inhaltsanalyse"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:87
+msgid "Titelvorlagen"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:89
+msgid "Verfügbare Platzhalter:"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:94
+#: src/Schema/SchemaGraph.php:146
+msgid "Startseite"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:95
+msgid "Beiträge"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:96
+msgid "Seiten"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:97
+msgid "Archive"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:98
+msgid "Suche"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:99
+msgid "404-Seite"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:114
+msgid "Standardbild"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:121
+msgid "Twitter-Benutzername"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:125
+msgid "Twitter-Card"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:132
+msgid "Facebook App-ID"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:138
+msgid "Organisation und Schema"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:140
+msgid "Betreibertyp"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:147
+msgid "Name"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:151
+msgid "Logo"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:154
+msgid "Logo wählen"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:158
+msgid "Telefon"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:162
+msgid "E-Mail"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:166
+msgid "Social-Profile"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:168
+msgid "Eine vollständige URL pro Zeile."
+msgstr ""

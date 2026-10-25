@@ -41,6 +41,19 @@ final class MetaBox {
 		wp_enqueue_media();
 		wp_enqueue_style( 'ps-seo-admin', PS_SEO_URL . 'assets/css/admin.css', array(), PS_SEO_VERSION );
 		wp_enqueue_script( 'ps-seo-admin', PS_SEO_URL . 'assets/js/admin.js', array(), PS_SEO_VERSION, true );
+		wp_localize_script(
+			'ps-seo-admin',
+			'psSeoAdmin',
+			array(
+				'titleLengthGood'       => __( 'Der SEO-Titel hat eine gute Länge.', 'ps-seo' ),
+				'titleLengthImprove'    => __( 'Der SEO-Titel sollte 30 bis 60 Zeichen lang sein.', 'ps-seo' ),
+				'descriptionLengthGood' => __( 'Die Meta-Beschreibung hat eine gute Länge.', 'ps-seo' ),
+				'descriptionImprove'    => __( 'Die Meta-Beschreibung sollte 120 bis 160 Zeichen lang sein.', 'ps-seo' ),
+				'keywordInTitle'        => __( 'Das Fokus-Keyword ist im SEO-Titel enthalten.', 'ps-seo' ),
+				'keywordInDescription'  => __( 'Das Fokus-Keyword ist in der Meta-Beschreibung enthalten.', 'ps-seo' ),
+				'keywordMissing'        => __( 'Es wurde kein Fokus-Keyword gesetzt.', 'ps-seo' ),
+			)
+		);
 	}
 
 	public static function render( \WP_Post $post ): void {
@@ -99,7 +112,7 @@ final class MetaBox {
 					<span><?php esc_html_e( 'Social-Media-Bild', 'ps-seo' ); ?></span>
 					<span class="ps-seo-media-field">
 						<input type="number" min="0" name="ps_seo[social][image_id]" value="<?php echo esc_attr( $social['image_id'] ?? 0 ); ?>">
-						<button type="button" class="button ps-seo-select-media"><?php esc_html_e( 'Bild waehlen', 'ps-seo' ); ?></button>
+						<button type="button" class="button ps-seo-select-media"><?php esc_html_e( 'Bild wählen', 'ps-seo' ); ?></button>
 					</span>
 				</label>
 			</section>
