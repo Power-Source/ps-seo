@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const title = document.querySelector('[data-ps-seo-title]');
 	const description = document.querySelector('[data-ps-seo-description]');
 	const keyword = document.querySelector('[data-ps-seo-keyword]');
+	const preview = document.querySelector('[data-ps-seo-preview]');
 
 	if (!title || !description || !keyword) {
 		return;
@@ -91,40 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	const updateAnalysis = () => {
 		const titleValue = title.value.trim();
 		const descriptionValue = description.value.trim();
-		const keywordValue = keyword.value.trim().toLowerCase();
-		let score = 0;
-		const checks = [];
+		const content = document.querySelector('#content')?.value || '';
+		const result = window.psSeoContentAnalysis.analyze({
+			title: titleValue,
+			description: descriptionValue,
+			keyword: keyword.value,
+			content,
+		});
 
-		document.querySelector('[data-ps-seo-title-count]').textContent = titleValue.length;
-		document.querySelector('[data-ps-seo-description-count]').textContent = descriptionValue.length;
-
-		if (titleValue.length >= 30 && titleValue.length <= 60) {
-			score += 30;
-			checks.push(psSeoAdmin.titleLengthGood);
-		} else {
-			checks.push(psSeoAdmin.titleLengthImprove);
-		}
-
-		if (descriptionValue.length >= 120 && descriptionValue.length <= 160) {
-			score += 30;
-			checks.push(psSeoAdmin.descriptionLengthGood);
-		} else {
-			checks.push(psSeoAdmin.descriptionImprove);
-		}
-
-		if (keywordValue) {
-			score += 20;
-			if (titleValue.toLowerCase().includes(keywordValue)) {
-				score += 10;
-				checks.push(psSeoAdmin.keywordInTitle);
-			}
-			if (descriptionValue.toLowerCase().includes(keywordValue)) {
-				score += 10;
-				checks.push(psSeoAdmin.keywordInDescription);
-			}
-		} else {
-			checks.push(psSeoAdmin.keywordMissing);
-		}
+		document.querySelector('[data-ps-seo-title-count]').textContent = result.titleLength;
+		document.querySelector('[data-ps-seo-description-count]').textContent = result.descriptionLength;
 
 		const scoreElement = document.querySelector('[data-ps-seo-score]');
 		const list = document.querySelector('[data-ps-seo-analysis-list]');
@@ -132,16 +109,23 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		scoreElement.textContent = score;
-		scoreElement.classList.toggle('is-good', score >= 80);
-		scoreElement.classList.toggle('is-warning', score >= 50 && score < 80);
-		list.replaceChildren(...checks.map((check) => {
+		scoreElement.textContent = result.score;
+		scoreElement.classList.toggle('is-good', result.score >= 80);
+		scoreElement.classList.toggle('is-warning', result.score >= 50 && result.score < 80);
+		list.replaceChildren(...result.checks.map((check) => {
 			const item = document.createElement('li');
-			item.textContent = check;
+			item.classList.add(`is-${check.status}`);
+			item.textContent = psSeoAdmin[check.key];
 			return item;
 		}));
+
+		if (preview) {
+			preview.querySelector('[data-ps-seo-preview-title]').textContent = titleValue || preview.dataset.psSeoPreviewDefaultTitle;
+			preview.querySelector('[data-ps-seo-preview-description]').textContent = descriptionValue || preview.dataset.psSeoPreviewDefaultDescription;
+		}
 	};
 
 	[title, description, keyword].forEach((field) => field.addEventListener('input', updateAnalysis));
+	document.querySelector('#content')?.addEventListener('input', updateAnalysis);
 	updateAnalysis();
 });

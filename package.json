@@ -1,0 +1,7 @@
+{
+  "name": "ps-seo",
+  "private": true,
+  "scripts": {
+    "test:js": "node --test tests/js/**/*.test.js"
+  }
+}

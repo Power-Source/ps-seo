@@ -41,18 +41,28 @@ final class MetaBox {
 
 		wp_enqueue_media();
 		wp_enqueue_style( 'ps-seo-admin', PS_SEO_URL . 'assets/css/admin.css', array(), PS_SEO_VERSION );
-		wp_enqueue_script( 'ps-seo-admin', PS_SEO_URL . 'assets/js/admin.js', array(), PS_SEO_VERSION, true );
+		wp_enqueue_script( 'ps-seo-content-analysis', PS_SEO_URL . 'assets/js/content-analysis.js', array(), PS_SEO_VERSION, true );
+		wp_enqueue_script( 'ps-seo-admin', PS_SEO_URL . 'assets/js/admin.js', array( 'ps-seo-content-analysis' ), PS_SEO_VERSION, true );
 		wp_localize_script(
 			'ps-seo-admin',
 			'psSeoAdmin',
 			array(
 				'titleLengthGood'       => __( 'Der SEO-Titel hat eine gute Länge.', 'ps-seo' ),
 				'titleLengthImprove'    => __( 'Der SEO-Titel sollte 30 bis 60 Zeichen lang sein.', 'ps-seo' ),
+				'titleMissing'          => __( 'Es wurde kein SEO-Titel gesetzt.', 'ps-seo' ),
 				'descriptionLengthGood' => __( 'Die Meta-Beschreibung hat eine gute Länge.', 'ps-seo' ),
 				'descriptionImprove'    => __( 'Die Meta-Beschreibung sollte 120 bis 160 Zeichen lang sein.', 'ps-seo' ),
+				'descriptionMissing'    => __( 'Es wurde keine Meta-Beschreibung gesetzt.', 'ps-seo' ),
+				'keywordSet'            => __( 'Ein Fokus-Keyword wurde gesetzt.', 'ps-seo' ),
 				'keywordInTitle'        => __( 'Das Fokus-Keyword ist im SEO-Titel enthalten.', 'ps-seo' ),
+				'keywordNotInTitle'     => __( 'Das Fokus-Keyword fehlt im SEO-Titel.', 'ps-seo' ),
 				'keywordInDescription'  => __( 'Das Fokus-Keyword ist in der Meta-Beschreibung enthalten.', 'ps-seo' ),
+				'keywordNotInDescription' => __( 'Das Fokus-Keyword fehlt in der Meta-Beschreibung.', 'ps-seo' ),
+				'keywordInContent'      => __( 'Das Fokus-Keyword ist im Inhalt enthalten.', 'ps-seo' ),
+				'keywordNotInContent'   => __( 'Das Fokus-Keyword fehlt im Inhalt.', 'ps-seo' ),
 				'keywordMissing'        => __( 'Es wurde kein Fokus-Keyword gesetzt.', 'ps-seo' ),
+				'contentLengthGood'     => __( 'Der Inhalt hat mindestens 300 Wörter.', 'ps-seo' ),
+				'contentLengthImprove'  => __( 'Der Inhalt sollte mindestens 300 Wörter haben.', 'ps-seo' ),
 			)
 		);
 	}
@@ -77,6 +87,12 @@ final class MetaBox {
 			</div>
 
 			<section data-ps-seo-panel="search">
+				<div class="ps-seo-search-preview" data-ps-seo-preview data-ps-seo-preview-default-title="<?php echo esc_attr( get_the_title( $post ) ); ?>" data-ps-seo-preview-default-description="<?php echo esc_attr( wp_strip_all_tags( get_the_excerpt( $post ) ) ); ?>">
+					<span class="ps-seo-preview-label"><?php esc_html_e( 'Google-Vorschau', 'ps-seo' ); ?></span>
+					<p class="ps-seo-search-preview-url"><?php echo esc_html( get_permalink( $post ) ); ?></p>
+					<strong data-ps-seo-preview-title><?php echo esc_html( $title ?: get_the_title( $post ) ); ?></strong>
+					<p data-ps-seo-preview-description><?php echo esc_html( $description ?: wp_strip_all_tags( get_the_excerpt( $post ) ) ); ?></p>
+				</div>
 				<label class="ps-seo-field">
 					<span><?php esc_html_e( 'Fokus-Keyword', 'ps-seo' ); ?></span>
 					<input type="text" class="widefat" name="ps_seo[focus_keyword]" value="<?php echo esc_attr( $keyword ); ?>" data-ps-seo-keyword>

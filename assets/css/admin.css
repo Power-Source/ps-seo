@@ -712,9 +712,59 @@ a.ps-seo-sitemap-link:focus {
 	padding: 14px 16px;
 }
 
+.ps-seo-search-preview {
+	border: 1px solid var(--ps-seo-border);
+	border-radius: 7px;
+	margin: 0 0 20px;
+	padding: 15px 16px;
+}
+
+.ps-seo-search-preview .ps-seo-preview-label {
+	color: var(--ps-seo-muted);
+	display: block;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	margin-bottom: 9px;
+	text-transform: uppercase;
+}
+
+.ps-seo-search-preview-url {
+	color: #188038;
+	font-size: 12px;
+	margin: 0 0 3px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ps-seo-search-preview strong {
+	color: #1a0dab;
+	display: block;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.3;
+	margin-bottom: 4px;
+}
+
+.ps-seo-search-preview > p:last-child {
+	color: #4d5156;
+	font-size: 13px;
+	line-height: 1.45;
+	margin: 0;
+}
+
 .ps-seo-analysis ul {
 	list-style: disc;
 	margin: 10px 0 0 18px;
+}
+
+.ps-seo-analysis li.is-good::marker {
+	color: var(--ps-seo-success);
+}
+
+.ps-seo-analysis li.is-warning::marker {
+	color: #dba617;
 }
 
 .ps-seo-score {
