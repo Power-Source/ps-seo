@@ -71,24 +71,19 @@ final class SettingsPage {
 		$sitemap_available = ! empty( $settings['features']['sitemap'] ) && (bool) get_option( 'blog_public' );
 		?>
 		<div class="wrap ps-seo-settings">
-			<header class="ps-seo-page-header">
-				<div>
-					<span class="ps-seo-eyebrow"><?php esc_html_e( 'Suchmaschinenoptimierung', 'ps-seo' ); ?></span>
-					<h1><?php esc_html_e( 'PS SEO', 'ps-seo' ); ?> <span>v<?php echo esc_html( PS_SEO_VERSION ); ?></span></h1>
-					<p><?php esc_html_e( 'Steuere Suchdarstellung, Social Sharing, strukturierte Daten und Indexierung zentral an einem Ort.', 'ps-seo' ); ?></p>
-				</div>
+			<h1 class="ps-seo-settings-title">
+				<span class="ps-seo-settings-name"><?php esc_html_e( 'PS SEO', 'ps-seo' ); ?> <span class="ps-seo-settings-version">v<?php echo esc_html( PS_SEO_VERSION ); ?></span></span>
 				<?php if ( $sitemap_available ) : ?>
-					<a class="button button-secondary" href="<?php echo esc_url( home_url( '/ps-sitemap.xml' ) ); ?>" target="_blank" rel="noopener">
-						<span class="dashicons dashicons-external"></span>
+					<a class="ps-seo-sitemap-link" href="<?php echo esc_url( home_url( '/ps-sitemap.xml' ) ); ?>" target="_blank" rel="noopener">
 						<?php esc_html_e( 'Sitemap öffnen', 'ps-seo' ); ?>
 					</a>
 				<?php else : ?>
-					<span class="button button-secondary disabled" aria-disabled="true">
-						<span class="dashicons dashicons-hidden"></span>
+					<span class="ps-seo-sitemap-link is-unavailable">
 						<?php esc_html_e( 'Sitemap nicht verfügbar', 'ps-seo' ); ?>
 					</span>
 				<?php endif; ?>
-			</header>
+			</h1>
+			<p class="ps-seo-settings-description"><?php esc_html_e( 'Steuere Suchdarstellung, Social Sharing, strukturierte Daten und Indexierung zentral an einem Ort.', 'ps-seo' ); ?></p>
 
 			<form action="options.php" method="post" class="ps-seo-settings-form">
 				<?php settings_fields( 'ps_seo' ); ?>
