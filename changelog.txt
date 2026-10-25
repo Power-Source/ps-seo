@@ -1,0 +1,11 @@
+PS SEO
+
+3.0.0
+------
+- Plugin-Kern mit Namespace-Autoloading neu aufgebaut.
+- Moderne Titel-, Meta-, Canonical- und Robots-Verarbeitung ergaenzt.
+- Open Graph, Twitter Cards und Bild-Fallbacks neu implementiert.
+- Zentralen JSON-LD-Graph fuer Website, Betreiber, Seiten, Artikel und Breadcrumbs hinzugefuegt.
+- WordPress-Core-Sitemaps um noindex- und Redirect-Ausschluesse erweitert.
+- Neue SEO-Metabox, Einstellungen und Inhaltsanalyse implementiert.
+- Historische SmartCrawl-/WDS-Laufzeit entfernt.

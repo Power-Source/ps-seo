@@ -1,0 +1,77 @@
+.ps-seo-settings {
+	max-width: 1080px;
+}
+
+.ps-seo-card,
+.ps-seo-metabox {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin: 16px 0;
+	padding: 20px;
+}
+
+.ps-seo-feature-grid {
+	display: grid;
+	gap: 12px;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ps-seo-field {
+	display: grid;
+	gap: 6px;
+	margin: 16px 0;
+}
+
+.ps-seo-field > span:first-child {
+	font-weight: 600;
+}
+
+.ps-seo-media-field {
+	align-items: center;
+	display: flex;
+	gap: 8px;
+}
+
+.ps-seo-tabs {
+	border-bottom: 1px solid #dcdcde;
+	display: flex;
+	gap: 6px;
+	margin: -4px 0 20px;
+	padding-bottom: 10px;
+}
+
+.ps-seo-tabs .is-active {
+	background: #2271b1;
+	border-color: #2271b1;
+	color: #fff;
+}
+
+.ps-seo-analysis {
+	background: #f6f7f7;
+	border-left: 4px solid #2271b1;
+	margin-top: 20px;
+	padding: 12px 16px;
+}
+
+.ps-seo-score {
+	background: #dcdcde;
+	border-radius: 999px;
+	display: inline-block;
+	font-weight: 700;
+	margin-left: 8px;
+	min-width: 2.5em;
+	padding: 4px 8px;
+	text-align: center;
+}
+
+.ps-seo-score.is-good {
+	background: #00a32a;
+	color: #fff;
+}
+
+.ps-seo-score.is-warning {
+	background: #dba617;
+	color: #1d2327;
+}
