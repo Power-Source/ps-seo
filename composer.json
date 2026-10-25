@@ -1,6 +1,6 @@
 {
     "name": "psource/ps-seo",
-    "description": "Moderne SEO-Werkzeuge fuer WordPress und ClassicPress",
+    "description": "Moderne SEO-Werkzeuge fuer ClassicPress",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "require": {

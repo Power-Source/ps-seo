@@ -19,7 +19,7 @@ msgstr ""
 #: src/Admin/MetaBox.php:27
 #: src/Admin/SettingsPage.php:17
 #: src/Admin/SettingsPage.php:18
-#: src/Admin/SettingsPage.php:57
+#: src/Admin/SettingsPage.php:60
 msgid "PS SEO"
 msgstr "PS SEO"
 
@@ -71,11 +71,13 @@ msgid "Suchergebnis"
 msgstr "Search result"
 
 #: src/Admin/MetaBox.php:74
-#: src/Admin/SettingsPage.php:112
+#: src/Admin/SettingsPage.php:79
+#: src/Admin/SettingsPage.php:245
 msgid "Social Media"
 msgstr "Social media"
 
 #: src/Admin/MetaBox.php:75
+#: src/Admin/SettingsPage.php:82
 msgid "Erweitert"
 msgstr "Advanced"
 
@@ -108,7 +110,7 @@ msgid "Social-Media-Bild"
 msgstr "Social media image"
 
 #: src/Admin/MetaBox.php:115
-#: src/Admin/SettingsPage.php:117
+#: src/Admin/SettingsPage.php:258
 msgid "Bild wählen"
 msgstr "Choose image"
 
@@ -136,119 +138,336 @@ msgstr "Automatic"
 msgid "Kein Seitenschema"
 msgstr "No page schema"
 
-#: src/Admin/SettingsPage.php:58
-msgid "Zentrale Einstellungen für Metadaten, Social Sharing, strukturierte Daten und Sitemaps."
-msgstr "Central settings for metadata, social sharing, structured data, and sitemaps."
-
-#: src/Admin/SettingsPage.php:64
-msgid "Module"
-msgstr "Modules"
-
-#: src/Admin/SettingsPage.php:68
+#: src/Admin/SettingsPage.php:133
 msgid "Titel und Metadaten"
 msgstr "Titles and metadata"
 
-#: src/Admin/SettingsPage.php:69
-msgid "Open Graph und Twitter Cards"
-msgstr "Open Graph and Twitter Cards"
-
-#: src/Admin/SettingsPage.php:70
-msgid "Schema.org"
-msgstr "Schema.org"
-
-#: src/Admin/SettingsPage.php:71
-msgid "XML-Sitemaps"
-msgstr "XML sitemaps"
-
-#: src/Admin/SettingsPage.php:72
+#: src/Admin/SettingsPage.php:153
 msgid "Weiterleitungen"
 msgstr "Redirects"
 
-#: src/Admin/SettingsPage.php:73
+#: src/Admin/SettingsPage.php:158
 msgid "Inhaltsanalyse"
 msgstr "Content analysis"
 
-#: src/Admin/SettingsPage.php:87
+#: src/Admin/SettingsPage.php:213
 msgid "Titelvorlagen"
 msgstr "Title templates"
 
-#: src/Admin/SettingsPage.php:89
-msgid "Verfügbare Platzhalter:"
-msgstr "Available placeholders:"
-
-#: src/Admin/SettingsPage.php:94
+#: src/Admin/SettingsPage.php:203
 #: src/Schema/SchemaGraph.php:146
 msgid "Startseite"
 msgstr "Homepage"
 
-#: src/Admin/SettingsPage.php:95
+#: src/Admin/SettingsPage.php:204
 msgid "Beiträge"
 msgstr "Posts"
 
-#: src/Admin/SettingsPage.php:96
+#: src/Admin/SettingsPage.php:205
 msgid "Seiten"
 msgstr "Pages"
 
-#: src/Admin/SettingsPage.php:97
+#: src/Admin/SettingsPage.php:206
 msgid "Archive"
 msgstr "Archives"
 
-#: src/Admin/SettingsPage.php:98
+#: src/Admin/SettingsPage.php:207
 msgid "Suche"
 msgstr "Search"
 
-#: src/Admin/SettingsPage.php:99
+#: src/Admin/SettingsPage.php:208
 msgid "404-Seite"
 msgstr "404 page"
 
-#: src/Admin/SettingsPage.php:114
+#: src/Admin/SettingsPage.php:254
 msgid "Standardbild"
 msgstr "Default image"
 
-#: src/Admin/SettingsPage.php:121
-msgid "Twitter-Benutzername"
-msgstr "Twitter username"
-
-#: src/Admin/SettingsPage.php:125
+#: src/Admin/SettingsPage.php:266
 msgid "Twitter-Card"
 msgstr "Twitter card"
 
-#: src/Admin/SettingsPage.php:132
+#: src/Admin/SettingsPage.php:273
 msgid "Facebook App-ID"
 msgstr "Facebook App ID"
 
-#: src/Admin/SettingsPage.php:138
+#: src/Admin/SettingsPage.php:299
 msgid "Organisation und Schema"
 msgstr "Organization and schema"
 
-#: src/Admin/SettingsPage.php:140
+#: src/Admin/SettingsPage.php:307
 msgid "Betreibertyp"
 msgstr "Owner type"
 
-#: src/Admin/SettingsPage.php:147
+#: src/Admin/SettingsPage.php:314
 msgid "Name"
 msgstr "Name"
 
-#: src/Admin/SettingsPage.php:151
+#: src/Admin/SettingsPage.php:318
 msgid "Logo"
 msgstr "Logo"
 
-#: src/Admin/SettingsPage.php:154
+#: src/Admin/SettingsPage.php:321
 msgid "Logo wählen"
 msgstr "Choose logo"
 
-#: src/Admin/SettingsPage.php:158
+#: src/Admin/SettingsPage.php:325
 msgid "Telefon"
 msgstr "Phone"
 
-#: src/Admin/SettingsPage.php:162
+#: src/Admin/SettingsPage.php:329
 msgid "E-Mail"
 msgstr "Email"
 
-#: src/Admin/SettingsPage.php:166
+#: src/Admin/SettingsPage.php:333
 msgid "Social-Profile"
 msgstr "Social profiles"
 
-#: src/Admin/SettingsPage.php:168
+#: src/Admin/SettingsPage.php:334
 msgid "Eine vollständige URL pro Zeile."
 msgstr "One complete URL per line."
+
+#: src/Admin/SettingsPage.php:59
+msgid "Suchmaschinenoptimierung"
+msgstr "Search engine optimization"
+
+#: src/Admin/SettingsPage.php:61
+msgid "Steuere Suchdarstellung, Social Sharing, strukturierte Daten und Indexierung zentral an einem Ort."
+msgstr "Manage search appearance, social sharing, structured data, and indexing centrally in one place."
+
+#: src/Admin/SettingsPage.php:65
+msgid "Sitemap öffnen"
+msgstr "Open sitemap"
+
+#: src/Admin/SettingsPage.php:74
+msgid "PS SEO Bereiche"
+msgstr "PS SEO sections"
+
+#: src/Admin/SettingsPage.php:77
+msgid "Übersicht"
+msgstr "Overview"
+
+#: src/Admin/SettingsPage.php:78
+msgid "Titel & Meta"
+msgstr "Titles & Meta"
+
+#: src/Admin/SettingsPage.php:80
+msgid "Schema"
+msgstr "Schema"
+
+#: src/Admin/SettingsPage.php:81
+msgid "Sitemap"
+msgstr "Sitemap"
+
+#: src/Admin/SettingsPage.php:121
+msgid "Änderungen gelten unmittelbar nach dem Speichern."
+msgstr "Changes take effect immediately after saving."
+
+#: src/Admin/SettingsPage.php:122
+msgid "SEO-Einstellungen speichern"
+msgstr "Save SEO settings"
+
+#: src/Admin/SettingsPage.php:134
+msgid "SEO-Titel, Beschreibungen, Canonicals und Robots-Direktiven."
+msgstr "SEO titles, descriptions, canonicals, and robots directives."
+
+#: src/Admin/SettingsPage.php:138
+msgid "Social Sharing"
+msgstr "Social sharing"
+
+#: src/Admin/SettingsPage.php:139
+msgid "Open Graph und Twitter Cards mit intelligenten Bild-Fallbacks."
+msgstr "Open Graph and Twitter Cards with intelligent image fallbacks."
+
+#: src/Admin/SettingsPage.php:143
+msgid "Strukturierte Daten"
+msgstr "Structured data"
+
+#: src/Admin/SettingsPage.php:144
+msgid "Ein zentraler JSON-LD-Graph für Website, Betreiber, Inhalte und Breadcrumbs."
+msgstr "One central JSON-LD graph for the website, owner, content, and breadcrumbs."
+
+#: src/Admin/SettingsPage.php:148
+#: src/Admin/SettingsPage.php:362
+msgid "XML-Sitemap"
+msgstr "XML sitemap"
+
+#: src/Admin/SettingsPage.php:149
+msgid "ClassicPress-Core-Sitemap ohne noindex- und weitergeleitete Inhalte."
+msgstr "ClassicPress core sitemap without noindex and redirected content."
+
+#: src/Admin/SettingsPage.php:154
+msgid "Sichere permanente Weiterleitungen direkt am jeweiligen Inhalt."
+msgstr "Safe permanent redirects directly on each content item."
+
+#: src/Admin/SettingsPage.php:159
+msgid "Direktes Feedback zu Titel, Beschreibung und Fokus-Keyword."
+msgstr "Immediate feedback on the title, description, and focus keyword."
+
+#: src/Admin/SettingsPage.php:165
+msgid "SEO-Module"
+msgstr "SEO modules"
+
+#: src/Admin/SettingsPage.php:166
+msgid "Aktiviere nur die Funktionen, die PS SEO für diese Website übernehmen soll."
+msgstr "Enable only the features that PS SEO should manage for this website."
+
+#: src/Admin/SettingsPage.php:168
+msgid "System bereit"
+msgstr "System ready"
+
+#: src/Admin/SettingsPage.php:190
+msgid "ClassicPress-native Ausgabe"
+msgstr "ClassicPress-native output"
+
+#: src/Admin/SettingsPage.php:191
+msgid "Keine Titel-Pufferung und keine parallele Sitemap-Engine. PS SEO erweitert die aktuellen ClassicPress-APIs."
+msgstr "No title buffering and no parallel sitemap engine. PS SEO extends the current ClassicPress APIs."
+
+#: src/Admin/SettingsPage.php:194
+msgid "Pro Inhalt steuerbar"
+msgstr "Controllable per content item"
+
+#: src/Admin/SettingsPage.php:195
+msgid "Individuelle Such-, Social-, Robots-, Canonical-, Schema- und Redirect-Einstellungen findest du direkt im Editor."
+msgstr "Individual search, social, robots, canonical, schema, and redirect settings are available directly in the editor."
+
+#: src/Admin/SettingsPage.php:203
+msgid "Titel der Website oder statischen Startseite."
+msgstr "Title of the website or static homepage."
+
+#: src/Admin/SettingsPage.php:204
+msgid "Standardvorlage für einzelne Beiträge."
+msgstr "Default template for individual posts."
+
+#: src/Admin/SettingsPage.php:205
+msgid "Standardvorlage für statische Seiten."
+msgstr "Default template for static pages."
+
+#: src/Admin/SettingsPage.php:206
+msgid "Kategorien, Schlagwörter, Autoren und weitere Archive."
+msgstr "Categories, tags, authors, and other archives."
+
+#: src/Admin/SettingsPage.php:207
+msgid "Titel für interne Suchergebnisse."
+msgstr "Title for internal search results."
+
+#: src/Admin/SettingsPage.php:208
+msgid "Titel für nicht gefundene Inhalte."
+msgstr "Title for content that was not found."
+
+#: src/Admin/SettingsPage.php:214
+msgid "Definiere konsistente Standardtitel. Individuelle SEO-Titel überschreiben diese Vorlagen."
+msgstr "Define consistent default titles. Individual SEO titles override these templates."
+
+#: src/Admin/SettingsPage.php:219
+msgid "Platzhalter"
+msgstr "Placeholders"
+
+#: src/Admin/SettingsPage.php:246
+msgid "Lege globale Fallbacks für Facebook, LinkedIn, WhatsApp, X und weitere Dienste fest."
+msgstr "Set global fallbacks for Facebook, LinkedIn, WhatsApp, X, and other services."
+
+#: src/Admin/SettingsPage.php:252
+msgid "Globale Vorgaben"
+msgstr "Global defaults"
+
+#: src/Admin/SettingsPage.php:255
+msgid "Wird verwendet, wenn weder ein individuelles Social-Bild noch ein Beitragsbild existiert."
+msgstr "Used when neither an individual social image nor a featured image exists."
+
+#: src/Admin/SettingsPage.php:262
+msgid "Twitter-/X-Benutzername"
+msgstr "Twitter/X username"
+
+#: src/Admin/SettingsPage.php:279
+msgid "Beispielvorschau"
+msgstr "Example preview"
+
+#: src/Admin/SettingsPage.php:300
+msgid "Diese Angaben verbinden Website, Betreiber und Inhalte im zentralen JSON-LD-Graph."
+msgstr "This information connects the website, owner, and content in the central JSON-LD graph."
+
+#: src/Admin/SettingsPage.php:363
+msgid "PS SEO erweitert die ClassicPress-Core-Sitemap, statt eine konkurrierende Sitemap-Engine zu betreiben."
+msgstr "PS SEO extends the ClassicPress core sitemap instead of running a competing sitemap engine."
+
+#: src/Admin/SettingsPage.php:366
+msgid "Aktiv"
+msgstr "Active"
+
+#: src/Admin/SettingsPage.php:366
+msgid "Deaktiviert"
+msgstr "Disabled"
+
+#: src/Admin/SettingsPage.php:373
+msgid "Sitemap-Index"
+msgstr "Sitemap index"
+
+#: src/Admin/SettingsPage.php:376
+msgid "Öffnen"
+msgstr "Open"
+
+#: src/Admin/SettingsPage.php:379
+msgid "Enthaltene Inhaltstypen"
+msgstr "Included content types"
+
+#: src/Admin/SettingsPage.php:388
+msgid "Automatische Filterung"
+msgstr "Automatic filtering"
+
+#: src/Admin/SettingsPage.php:388
+msgid "Inhalte mit noindex oder einem Weiterleitungsziel werden automatisch aus der Sitemap ausgeschlossen."
+msgstr "Content with noindex or a redirect target is automatically excluded from the sitemap."
+
+#: src/Admin/SettingsPage.php:398
+msgid "Erweiterte Werkzeuge"
+msgstr "Advanced tools"
+
+#: src/Admin/SettingsPage.php:399
+msgid "Technische Funktionen und Hinweise für besondere SEO-Anforderungen."
+msgstr "Technical features and guidance for special SEO requirements."
+
+#: src/Admin/SettingsPage.php:406
+msgid "301-Weiterleitungen"
+msgstr "301 redirects"
+
+#: src/Admin/SettingsPage.php:407
+msgid "Ein Weiterleitungsziel kann in der PS-SEO-Metabox jedes öffentlichen Inhalts hinterlegt werden. Identische und ungültige Ziele werden ignoriert."
+msgstr "A redirect target can be configured in the PS SEO metabox of any public content item. Identical and invalid targets are ignored."
+
+#: src/Admin/SettingsPage.php:411
+msgid "Robots-Steuerung"
+msgstr "Robots controls"
+
+#: src/Admin/SettingsPage.php:412
+msgid "noindex, nofollow, noarchive und nosnippet werden über die ClassicPress Robots API ausgegeben."
+msgstr "noindex, nofollow, noarchive, and nosnippet are output through the ClassicPress Robots API."
+
+#: src/Admin/SettingsPage.php:416
+msgid "Saubere Ausgabe"
+msgstr "Clean output"
+
+#: src/Admin/SettingsPage.php:417
+msgid "PS SEO verwendet keine Output-Pufferung und überschreibt keine Theme-Dateien. Alle Ausgaben laufen über dokumentierte ClassicPress-Hooks."
+msgstr "PS SEO does not use output buffering and does not overwrite theme files. All output uses documented ClassicPress hooks."
+
+#: src/Admin/SettingsPage.php
+msgid "Sitemap nicht verfügbar"
+msgstr "Sitemap unavailable"
+
+#: src/Admin/SettingsPage.php
+msgid "Indexierung blockiert"
+msgstr "Indexing blocked"
+
+#: src/Admin/SettingsPage.php
+msgid "Durch Sichtbarkeit blockiert"
+msgstr "Blocked by site visibility"
+
+#: src/Admin/SettingsPage.php
+msgid "ClassicPress blockiert die Sitemap, solange Suchmaschinen vom Besuch der Website abgehalten werden. Ändere bei Bedarf die Sichtbarkeit unter Einstellungen > Lesen."
+msgstr "ClassicPress blocks the sitemap while search engines are discouraged from visiting the website. If needed, change the visibility under Settings > Reading."
+
+#: src/Admin/SettingsPage.php
+msgid "Nicht verfügbar"
+msgstr "Unavailable"

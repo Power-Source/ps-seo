@@ -5,6 +5,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 delete_option( 'ps_seo_settings' );
+delete_option( 'ps_seo_rewrite_version' );
 
 $meta_keys = array(
 	'_ps_seo_title',

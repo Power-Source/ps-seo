@@ -1,4 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
+	const settingsTabs = [...document.querySelectorAll('[data-ps-seo-settings-tab]')];
+	const settingsPanels = [...document.querySelectorAll('[data-ps-seo-settings-panel]')];
+
+	if (settingsTabs.length && settingsPanels.length) {
+		const activateSettingsTab = (key) => {
+			const activeTab = settingsTabs.find((tab) => tab.dataset.psSeoSettingsTab === key) || settingsTabs[0];
+			const activeKey = activeTab.dataset.psSeoSettingsTab;
+
+			settingsTabs.forEach((tab) => {
+				const isActive = tab === activeTab;
+				tab.classList.toggle('is-active', isActive);
+				tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+			});
+			settingsPanels.forEach((panel) => {
+				panel.hidden = panel.dataset.psSeoSettingsPanel !== activeKey;
+			});
+
+			window.localStorage.setItem('psSeoSettingsTab', activeKey);
+			window.history.replaceState(null, '', `#ps-seo-${activeKey}`);
+		};
+
+		settingsTabs.forEach((tab) => {
+			tab.addEventListener('click', () => activateSettingsTab(tab.dataset.psSeoSettingsTab));
+		});
+
+		const hashTab = window.location.hash.replace('#ps-seo-', '');
+		const storedTab = window.localStorage.getItem('psSeoSettingsTab');
+		activateSettingsTab(hashTab || storedTab || 'overview');
+	}
+
+	document.querySelectorAll('.ps-seo-module-card input[type="checkbox"]').forEach((toggle) => {
+		toggle.addEventListener('change', () => {
+			toggle.closest('.ps-seo-module-card')?.classList.toggle('is-enabled', toggle.checked);
+		});
+	});
+
 	document.querySelectorAll('[data-ps-seo-tab]').forEach((button) => {
 		button.addEventListener('click', () => {
 			const container = button.closest('.ps-seo-metabox');
@@ -28,7 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 
 			frame.on('select', () => {
-				input.value = frame.state().get('selection').first().get('id');
+				const attachment = frame.state().get('selection').first();
+				input.value = attachment.get('id');
+
+				const panel = button.closest('[data-ps-seo-settings-panel]');
+				const preview = panel?.querySelector('[data-ps-seo-media-preview]');
+				if (preview) {
+					const sizes = attachment.get('sizes') || {};
+					const source = sizes.medium?.url || sizes.thumbnail?.url || attachment.get('url');
+					preview.style.backgroundImage = `url("${source}")`;
+					preview.querySelector('.dashicons')?.remove();
+				}
 			});
 			frame.open();
 		});

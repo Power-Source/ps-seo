@@ -4,9 +4,8 @@
  * Plugin URI: https://github.com/Power-Source/ps-seo
  * Description: Moderne SEO-Werkzeuge für Metadaten, Social Sharing, Schema und Sitemaps.
  * Version: 1.0.0
- * Requires at least: 6.0
+ * Requires CP: 2.7
  * Requires PHP: 8.0
- * Network: true
  * Text Domain: ps-seo
  * Domain Path: /languages
  * Author: PSOURCE
@@ -43,8 +42,11 @@ register_activation_hook(
 	__FILE__,
 	static function (): void {
 		\PSource\SEO\Settings::install_defaults();
+		\PSource\SEO\Sitemap\Sitemap::activate();
 	}
 );
+
+register_deactivation_hook( __FILE__, array( \PSource\SEO\Sitemap\Sitemap::class, 'deactivate' ) );
 
 add_action(
 	'plugins_loaded',

@@ -17,6 +17,7 @@ final class Metadata {
 		add_filter( 'get_canonical_url', array( self::class, 'filter_canonical' ), 20, 2 );
 		add_filter( 'wp_robots', array( self::class, 'filter_robots' ), 20 );
 		add_action( 'wp_head', array( self::class, 'output_description' ), 2 );
+		add_action( 'wp_head', array( self::class, 'output_archive_canonical' ), 10 );
 	}
 
 	public static function filter_title( string $title ): string {
@@ -78,6 +79,17 @@ final class Metadata {
 		$custom = (string) PostMeta::get( $post->ID, PostMeta::CANONICAL );
 
 		return '' !== $custom ? $custom : $canonical;
+	}
+
+	public static function output_archive_canonical(): void {
+		if ( ! is_front_page() && ! is_home() && ! is_archive() ) {
+			return;
+		}
+
+		global $wp;
+
+		$path = isset( $wp->request ) ? trailingslashit( $wp->request ) : '/';
+		printf( "<link rel=\"canonical\" href=\"%s\">\n", esc_url( home_url( $path ) ) );
 	}
 
 	public static function filter_robots( array $robots ): array {

@@ -1,13 +1,13 @@
 === PS SEO ===
 Contributors: PSOURCE
-Requires at least: 6.0
+Requires CP: 2.7
 Requires PHP: 8.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 
 == Beschreibung ==
 
-PS SEO verwaltet Suchmaschinen-Metadaten, Social-Media-Vorschauen, strukturierte Daten, Weiterleitungen und die WordPress-Core-Sitemap.
+PS SEO verwaltet Suchmaschinen-Metadaten, Social-Media-Vorschauen, strukturierte Daten, Weiterleitungen und die ClassicPress-Core-Sitemap.
 
 == Funktionen ==
 
