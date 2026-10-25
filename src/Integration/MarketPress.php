@@ -37,6 +37,53 @@ final class MarketPress {
 		return apply_filters( 'ps_seo_marketpress_product_schema', $schema, $product );
 	}
 
+	/**
+	 * @return array{views:int,sales:int,paid_sales:int,revenue:float,downloads:int}|null
+	 */
+	public static function performance_metrics( int $post_id, string $from, string $to ): ?array {
+		if ( ! self::is_product( $post_id ) || ! function_exists( 'ps_stats_provider' ) ) {
+			return null;
+		}
+
+		$provider = ps_stats_provider();
+		if (
+			! is_object( $provider )
+			|| ! method_exists( $provider, 'availability' )
+			|| ! method_exists( $provider, 'product_metrics' )
+			|| ! $provider->availability()
+		) {
+			return null;
+		}
+
+		$metrics = $provider->product_metrics( $post_id, $from, $to );
+		if ( ! is_array( $metrics ) ) {
+			return null;
+		}
+
+		return array(
+			'views'       => max( 0, (int) ( $metrics['views'] ?? 0 ) ),
+			'sales'       => max( 0, (int) ( $metrics['sales'] ?? 0 ) ),
+			'paid_sales'  => max( 0, (int) ( $metrics['paid_sales'] ?? 0 ) ),
+			'revenue'     => max( 0, (float) ( $metrics['revenue'] ?? 0 ) ),
+			'downloads'   => max( 0, (int) ( $metrics['downloads'] ?? 0 ) ),
+		);
+	}
+
+	public static function currency(): string {
+		$currency = 'EUR';
+
+		if ( function_exists( 'mp_get_setting' ) ) {
+			$cart      = function_exists( 'mp_cart' ) ? mp_cart() : null;
+			$is_global = is_multisite() && is_object( $cart ) && ! empty( $cart->is_global );
+
+			$currency = $is_global && function_exists( 'mp_get_network_setting' )
+				? mp_get_network_setting( 'global_currency', 'EUR' )
+				: mp_get_setting( 'currency', 'EUR' );
+		}
+
+		return strtoupper( sanitize_text_field( (string) $currency ) );
+	}
+
 	private static function product_data( \MP_Product $product, string $id, string $url ): array {
 		$product_id  = (int) $product->ID;
 		$description = trim( wp_strip_all_tags( (string) $product->excerpt() ) );
@@ -119,18 +166,4 @@ final class MarketPress {
 		return is_numeric( $value ) ? (float) $value : null;
 	}
 
-	private static function currency(): string {
-		$currency = 'EUR';
-
-		if ( function_exists( 'mp_get_setting' ) ) {
-			$cart      = function_exists( 'mp_cart' ) ? mp_cart() : null;
-			$is_global = is_multisite() && is_object( $cart ) && ! empty( $cart->is_global );
-
-			$currency = $is_global && function_exists( 'mp_get_network_setting' )
-				? mp_get_network_setting( 'global_currency', 'EUR' )
-				: mp_get_setting( 'currency', 'EUR' );
-		}
-
-		return strtoupper( sanitize_text_field( (string) $currency ) );
-	}
 }

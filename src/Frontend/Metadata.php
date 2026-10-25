@@ -5,6 +5,7 @@ namespace PSource\SEO\Frontend;
 use PSource\SEO\PostMeta;
 use PSource\SEO\Settings;
 use PSource\SEO\Template;
+use PSource\SEO\TermMeta;
 
 final class Metadata {
 
@@ -43,6 +44,15 @@ final class Metadata {
 			return Template::render( $template, array( 'post' => get_post( $post_id ) ) );
 		}
 
+		$term = self::queried_term();
+		if ( $term ) {
+			$custom = (string) TermMeta::get( $term->term_id, TermMeta::TITLE );
+
+			if ( '' !== $custom ) {
+				return Template::render( $custom );
+			}
+		}
+
 		$context = self::title_context();
 		if ( null === $context ) {
 			return $title;
@@ -64,7 +74,12 @@ final class Metadata {
 		} elseif ( is_front_page() ) {
 			$description = get_bloginfo( 'description' );
 		} elseif ( is_category() || is_tag() || is_tax() ) {
-			$description = term_description();
+			$term        = self::queried_term();
+			$description = $term ? (string) TermMeta::get( $term->term_id, TermMeta::DESCRIPTION ) : '';
+
+			if ( '' === $description ) {
+				$description = term_description();
+			}
 		}
 
 		$description = trim( wp_strip_all_tags( $description ) );
@@ -88,23 +103,41 @@ final class Metadata {
 
 		global $wp;
 
-		$path = isset( $wp->request ) ? trailingslashit( $wp->request ) : '/';
-		printf( "<link rel=\"canonical\" href=\"%s\">\n", esc_url( home_url( $path ) ) );
+		$term      = self::queried_term();
+		$canonical = $term ? (string) TermMeta::get( $term->term_id, TermMeta::CANONICAL ) : '';
+
+		if ( '' === $canonical ) {
+			$path      = isset( $wp->request ) ? trailingslashit( $wp->request ) : '/';
+			$canonical = home_url( $path );
+		}
+
+		printf( "<link rel=\"canonical\" href=\"%s\">\n", esc_url( $canonical ) );
 	}
 
 	public static function filter_robots( array $robots ): array {
-		if ( ! is_singular() ) {
+		if ( is_singular() ) {
+			$settings = (array) PostMeta::get( get_queried_object_id(), PostMeta::ROBOTS, array() );
+			foreach ( array( 'noindex', 'nofollow', 'noarchive', 'nosnippet' ) as $directive ) {
+				if ( ! empty( $settings[ $directive ] ) ) {
+					$robots[ $directive ] = true;
+				}
+			}
+
 			return $robots;
 		}
 
-		$settings = (array) PostMeta::get( get_queried_object_id(), PostMeta::ROBOTS, array() );
-		foreach ( array( 'noindex', 'nofollow', 'noarchive', 'nosnippet' ) as $directive ) {
-			if ( ! empty( $settings[ $directive ] ) ) {
-				$robots[ $directive ] = true;
-			}
+		$term = self::queried_term();
+		if ( $term && '1' === TermMeta::get( $term->term_id, TermMeta::NOINDEX ) ) {
+			$robots['noindex'] = true;
 		}
 
 		return $robots;
+	}
+
+	private static function queried_term(): ?\WP_Term {
+		$term = get_queried_object();
+
+		return $term instanceof \WP_Term ? $term : null;
 	}
 
 	private static function title_context(): ?string {

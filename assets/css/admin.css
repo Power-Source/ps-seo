@@ -767,6 +767,70 @@ a.ps-seo-sitemap-link:focus {
 	color: #dba617;
 }
 
+.ps-seo-product-performance {
+	background: #f7f6fc;
+	border: 1px solid #ded9f7;
+	border-radius: 7px;
+	margin-top: 20px;
+	padding: 15px 16px;
+}
+
+.ps-seo-product-performance-heading {
+	align-items: baseline;
+	display: flex;
+	gap: 8px;
+	justify-content: space-between;
+}
+
+.ps-seo-product-performance-heading > span {
+	color: var(--ps-seo-muted);
+	font-size: 11px;
+}
+
+.ps-seo-product-performance-grid {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	margin-top: 13px;
+}
+
+.ps-seo-product-performance-grid > div {
+	background: var(--ps-seo-white);
+	border: 1px solid #e5e2ef;
+	border-radius: 5px;
+	padding: 9px;
+}
+
+.ps-seo-product-performance-grid span,
+.ps-seo-product-performance-grid strong {
+	display: block;
+}
+
+.ps-seo-product-performance-grid span {
+	color: var(--ps-seo-muted);
+	font-size: 10px;
+	margin-bottom: 3px;
+}
+
+.ps-seo-product-performance-grid strong {
+	color: var(--ps-seo-text);
+	font-size: 14px;
+}
+
+.ps-seo-product-performance-insight {
+	color: var(--ps-seo-muted);
+	font-size: 12px;
+	margin: 13px 0 0;
+}
+
+.ps-seo-product-performance-insight.is-good {
+	color: #147a41;
+}
+
+.ps-seo-product-performance-insight.is-warning {
+	color: #8a5b00;
+}
+
 .ps-seo-score {
 	background: #dcdcde;
 	border-radius: 999px;
@@ -809,6 +873,10 @@ a.ps-seo-sitemap-link:focus {
 	.ps-seo-module-grid,
 	.ps-seo-two-column {
 		grid-template-columns: 1fr;
+	}
+
+	.ps-seo-product-performance-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
 	.ps-seo-social-preview,

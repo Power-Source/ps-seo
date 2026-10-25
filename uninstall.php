@@ -22,3 +22,14 @@ $meta_keys = array(
 foreach ( $meta_keys as $meta_key ) {
 	delete_post_meta_by_key( $meta_key );
 }
+
+$term_meta_keys = array(
+	'_ps_seo_term_title',
+	'_ps_seo_term_description',
+	'_ps_seo_term_canonical',
+	'_ps_seo_term_noindex',
+);
+
+foreach ( $term_meta_keys as $meta_key ) {
+	delete_term_meta_by_key( $meta_key );
+}

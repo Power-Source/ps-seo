@@ -76,6 +76,11 @@ final class MetaBox {
 		$robots      = (array) PostMeta::get( $post->ID, PostMeta::ROBOTS, array() );
 		$social      = (array) PostMeta::get( $post->ID, PostMeta::SOCIAL, array() );
 		$schema      = (array) PostMeta::get( $post->ID, PostMeta::SCHEMA, array() );
+		$metrics     = MarketPress::performance_metrics(
+			$post->ID,
+			wp_date( 'Y-m-d', strtotime( '-29 days' ) ),
+			wp_date( 'Y-m-d' )
+		);
 
 		wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME );
 		?>
@@ -113,6 +118,9 @@ final class MetaBox {
 						<span class="ps-seo-score" data-ps-seo-score>0</span>
 						<ul data-ps-seo-analysis-list></ul>
 					</div>
+				<?php endif; ?>
+				<?php if ( $metrics ) : ?>
+					<?php self::render_product_performance( $metrics ); ?>
 				<?php endif; ?>
 			</section>
 
@@ -206,6 +214,9 @@ final class MetaBox {
 		update_post_meta( $post_id, PostMeta::SOCIAL, $social );
 
 		$allowed_schema = array( '', 'Article', 'WebPage', 'none' );
+		if ( MarketPress::is_product( $post_id ) ) {
+			$allowed_schema[] = 'Product';
+		}
 		$schema_type    = sanitize_text_field( $input['schema']['type'] ?? '' );
 		update_post_meta(
 			$post_id,
@@ -225,5 +236,43 @@ final class MetaBox {
 
 	private static function length( string $value ): int {
 		return function_exists( 'mb_strlen' ) ? mb_strlen( $value ) : strlen( $value );
+	}
+
+	/**
+	 * @param array{views:int,sales:int,paid_sales:int,revenue:float,downloads:int} $metrics Product metrics from PS Stats.
+	 */
+	private static function render_product_performance( array $metrics ): void {
+		$conversion = $metrics['views'] > 0 ? ( $metrics['paid_sales'] / $metrics['views'] ) * 100 : 0;
+		?>
+		<div class="ps-seo-product-performance">
+			<div class="ps-seo-product-performance-heading">
+				<strong><?php esc_html_e( 'Produktleistung (30 Tage)', 'ps-seo' ); ?></strong>
+				<span><?php esc_html_e( 'Daten von PS Stats', 'ps-seo' ); ?></span>
+			</div>
+			<div class="ps-seo-product-performance-grid">
+				<div><span><?php esc_html_e( 'Aufrufe', 'ps-seo' ); ?></span><strong><?php echo esc_html( number_format_i18n( $metrics['views'] ) ); ?></strong></div>
+				<div><span><?php esc_html_e( 'Bezahlte Verkäufe', 'ps-seo' ); ?></span><strong><?php echo esc_html( number_format_i18n( $metrics['paid_sales'] ) ); ?></strong></div>
+				<div><span><?php esc_html_e( 'Umsatz', 'ps-seo' ); ?></span><strong><?php echo esc_html( number_format_i18n( $metrics['revenue'], 2 ) . ' ' . MarketPress::currency() ); ?></strong></div>
+				<div><span><?php esc_html_e( 'Downloads', 'ps-seo' ); ?></span><strong><?php echo esc_html( number_format_i18n( $metrics['downloads'] ) ); ?></strong></div>
+			</div>
+			<?php if ( $metrics['views'] >= 20 && 0 === $metrics['paid_sales'] ) : ?>
+				<p class="ps-seo-product-performance-insight is-warning"><?php esc_html_e( 'Dieses Produkt hat Aufrufe, aber noch keine bezahlten Verkäufe. Prüfe Suchintention, Angebot, Preis und Produktinformationen.', 'ps-seo' ); ?></p>
+			<?php elseif ( $metrics['paid_sales'] > 0 ) : ?>
+				<p class="ps-seo-product-performance-insight is-good">
+					<?php
+					echo esc_html(
+						sprintf(
+							/* translators: %s: paid sales per product view. */
+							__( '%s der Produktaufrufe führten zu bezahlten Verkäufen.', 'ps-seo' ),
+							number_format_i18n( $conversion, 1 ) . '%'
+						)
+					);
+					?>
+				</p>
+			<?php else : ?>
+				<p class="ps-seo-product-performance-insight"><?php esc_html_e( 'Noch keine Leistungsdaten verfügbar. PS Stats erfasst neue Daten ab seiner Aktivierung.', 'ps-seo' ); ?></p>
+			<?php endif; ?>
+		</div>
+		<?php
 	}
 }

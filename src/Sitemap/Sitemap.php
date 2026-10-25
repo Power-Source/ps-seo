@@ -4,6 +4,7 @@ namespace PSource\SEO\Sitemap;
 
 use PSource\SEO\PostMeta;
 use PSource\SEO\Settings;
+use PSource\SEO\TermMeta;
 
 final class Sitemap {
 
@@ -26,6 +27,7 @@ final class Sitemap {
 
 		if ( Settings::enabled( 'sitemap' ) ) {
 			add_filter( 'wp_sitemaps_posts_query_args', array( self::class, 'filter_query_args' ), 10, 2 );
+			add_filter( 'wp_sitemaps_taxonomies_query_args', array( self::class, 'filter_taxonomy_query_args' ), 10, 2 );
 		}
 	}
 
@@ -147,6 +149,28 @@ final class Sitemap {
 			),
 			array(
 				'key'     => PostMeta::REDIRECT,
+				'compare' => 'NOT EXISTS',
+			),
+		);
+
+		$args['meta_query'] = $existing
+			? array(
+				'relation' => 'AND',
+				$existing,
+				$exclusions,
+			)
+			: $exclusions;
+
+		return $args;
+	}
+
+	public static function filter_taxonomy_query_args( array $args, string $taxonomy ): array {
+		unset( $taxonomy );
+
+		$existing   = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : array();
+		$exclusions = array(
+			array(
+				'key'     => TermMeta::NOINDEX,
 				'compare' => 'NOT EXISTS',
 			),
 		);

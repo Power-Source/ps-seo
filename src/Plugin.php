@@ -4,6 +4,7 @@ namespace PSource\SEO;
 
 use PSource\SEO\Admin\MetaBox;
 use PSource\SEO\Admin\SettingsPage;
+use PSource\SEO\Admin\TaxonomyFields;
 use PSource\SEO\Frontend\Metadata;
 use PSource\SEO\Frontend\Redirect;
 use PSource\SEO\Frontend\Social;
@@ -22,6 +23,7 @@ final class Plugin {
 		self::$booted = true;
 
 		PostMeta::register();
+		TermMeta::register();
 		Metadata::register();
 		Redirect::register();
 		Social::register();
@@ -30,6 +32,7 @@ final class Plugin {
 
 		if ( is_admin() ) {
 			MetaBox::register();
+			TaxonomyFields::register();
 			SettingsPage::register();
 		}
 	}
